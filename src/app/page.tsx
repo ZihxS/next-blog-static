@@ -1,4 +1,5 @@
 import fs from 'fs'
+import Link from 'next/link'
 
 const getPostMetadata = () => {
   const files = fs.readdirSync("posts/")
@@ -8,13 +9,15 @@ const getPostMetadata = () => {
   return slugs
 }
 
-export default function Home() {
+const Home = () => {
   const postMetadata = getPostMetadata()
   const postPreviews = postMetadata.map((slug) => {
       return (
-        <div>
-          <h2>{slug}</h2>
-        </div>
+        <Link href={`/${slug}`}>
+          <div>
+            <h2>{slug}</h2>
+          </div>
+        </Link>
       )
   })
 
@@ -24,3 +27,6 @@ export default function Home() {
     </>
   )
 }
+
+
+export default Home
