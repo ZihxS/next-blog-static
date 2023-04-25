@@ -6,6 +6,10 @@ import Footer from '@/components/Footer'
 export const metadata = {
   title: 'Static Blog',
   description: 'Static Blog',
+  icons: {
+    icon: { url: '/favicon.ico', type: 'image/x-icon' },
+    shortcut: { url: '/favicon.ico', type: 'image/x-icon' },
+  },
 }
 
 export default function RootLayout({
