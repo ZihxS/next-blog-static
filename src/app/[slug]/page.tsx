@@ -1,8 +1,28 @@
-import { notFound } from "next/navigation";
 import GetPostMetadata from '@/models/GetPostMetadata'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Markdown from 'markdown-to-jsx'
+
+import { notFound } from "next/navigation"
+
+export async function generateMetadata(props: any) {
+    const { slug } = props.params
+
+    let dynamicTitle = slug
+    let dynamicDescription = slug
+
+    if (fs.existsSync(`posts/${slug}.md`)) {
+        const post = GetContent(slug)
+
+        dynamicTitle = post.data.title
+        dynamicDescription = post.data.subtitle
+    }
+
+    return {
+      title: `${dynamicTitle} - ZihxS's Blog`,
+      description: `${dynamicDescription}  - ZihxS's Blog`
+    }
+}
 
 const GetContent = (slug: string) => {
     const file = `posts/${slug}.md`
