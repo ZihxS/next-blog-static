@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import GetPostMetadata from '@/models/GetPostMetadata'
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -13,6 +14,11 @@ const GetContent = (slug: string) => {
 
 const Post = (props: any) => {
     const { slug } = props.params
+
+    if (!fs.existsSync(`posts/${slug}.md`)) {
+        notFound()
+    }
+
     const post = GetContent(slug)
 
     return (
