@@ -2,6 +2,9 @@ import './globals.css'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Loading from './loading'
+
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Static Blog',
@@ -20,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="mx-auto max-w-2xl px-6">
-        <Header />
-        {children}
-        <Footer />
+        <Suspense fallback={<Loading />}>
+          <Header />
+          {children}
+          <Footer />
+        </Suspense>
       </body>
     </html>
   )
