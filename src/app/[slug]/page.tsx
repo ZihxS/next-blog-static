@@ -17,8 +17,13 @@ const Post = (props: any) => {
 
     return (
         <>
-            <h1>{post.data.title}</h1>
-            <Markdown>{post.content}</Markdown>
+            <div className='text-center'>
+                <h1 className='text-2xl text-slate-700'>{post.data.title}</h1>
+                <p className='text-slate-400 mt-2'>{post.data.date}</p>
+            </div>
+            <article className='prose mt-6 border-t border-slate-400'>
+                <Markdown>{post.content}</Markdown>
+            </article>
         </>
     )
 }
