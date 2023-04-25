@@ -1,10 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-
-const inter = Inter({ subsets: ['latin'] })
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Static Blog',
@@ -18,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="mx-auto max-w-2xl px-6">
         <Header />
         {children}
         <Footer />
