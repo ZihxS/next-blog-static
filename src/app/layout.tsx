@@ -7,8 +7,8 @@ import Loading from './loading'
 import { Suspense } from 'react'
 
 export const metadata = {
-  title: 'Static Blog',
-  description: 'Static Blog',
+  title: "Home - ZihxS's Blog",
+  description: "Home - ZihxS's Blog",
   icons: {
     icon: { url: '/favicon.ico', type: 'image/x-icon' },
     shortcut: { url: '/favicon.ico', type: 'image/x-icon' },
