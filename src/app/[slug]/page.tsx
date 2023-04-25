@@ -1,8 +1,9 @@
+import GetPostMetadata from '@/models/GetPostMetadata'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Markdown from 'markdown-to-jsx'
 
-const getContent = (slug: string) => {
+const GetContent = (slug: string) => {
     const file = `posts/${slug}.md`
     const content = fs.readFileSync(file, "utf8")
     const matterResult = matter(content)
@@ -12,7 +13,7 @@ const getContent = (slug: string) => {
 
 const Post = (props: any) => {
     const { slug } = props.params
-    const post = getContent(slug)
+    const post = GetContent(slug)
 
     return (
         <>
@@ -20,6 +21,13 @@ const Post = (props: any) => {
             <Markdown>{post.content}</Markdown>
         </>
     )
+}
+
+export const generateStaticParams = async () => {
+    const posts = GetPostMetadata()
+    return posts.map((post) => ({
+        slug: post.slug
+    }))
 }
 
 export default Post
