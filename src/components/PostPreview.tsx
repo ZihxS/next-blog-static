@@ -1,5 +1,5 @@
-import { PostMetadata } from "@/models/interfaces/PostMetadata";
-import Link from "next/link";
+import { PostMetadata } from "@/models/interfaces/PostMetadata"
+import Link from "next/link"
 
 const PostPreview = (props: PostMetadata) => {
     return (
